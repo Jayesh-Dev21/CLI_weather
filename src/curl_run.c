@@ -9,6 +9,11 @@ node run_curl(char *request){
 
     curl = curl_easy_init();
 
+    if(!curl){
+        fprintf(stderr, "init failed\n");
+        return node_exit_failure();
+    }
+
     if(curl){
         curl_easy_setopt(curl, CURLOPT_URL, request);
 

@@ -6,7 +6,6 @@
 #include "exit.h"
 #include "parser.h"
 
-
 typedef struct Node{
     size_t size_arg;
     char* arg;
