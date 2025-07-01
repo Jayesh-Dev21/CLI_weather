@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall
 
-Target = weather
+TARGET = weather
 
 SRC = $(wildcard src/*.c)
 # searches for all *.c files in the src directory
@@ -11,7 +11,7 @@ HEADERS = $(wildcard src/headers/*.h)
 OBJ = $(SRC:.c=.o)
 
 $(TARGET): $(OBJ) 
-	$(CC) $(OBJ) -o $(TARGET)
+	$(CC) $(CFLAGS) $(OBJ) -o $(TARGET)
 
 # Make object files beforehand and compile only the changes *.c files 
 #results in faster execution.
