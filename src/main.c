@@ -13,6 +13,7 @@ int main(int argc, char *argv[]) {
 
     const char* weather_url_route = "https://wttr.in/";
     const char* weather_url_route_end = "?ATm";
+    const char* city_name = argv[1];
     
     size_t request_len = strlen(weather_url_route) + strlen(argv[1]) + strlen(weather_url_route_end) + 1;
     char *request = malloc(request_len);
@@ -22,7 +23,7 @@ int main(int argc, char *argv[]) {
     }
 
     strcpy(request,weather_url_route);
-    strcat(request, argv[1]);
+    strcat(request, city_name);
     strcat(request, weather_url_route_end);
     
     node result = run_curl(request);
