@@ -55,8 +55,10 @@ gcc main.c -o cli_weather -lcurl
 **Examples:**
 ```bash
 ./weather London
-./weather New York
+./weather New_York
 ```
+
+> For cities with multiple words use '-' or '_'
 
 ## Configuration
 
