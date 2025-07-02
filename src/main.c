@@ -2,18 +2,40 @@
 
 int main(int argc, char *argv[]) {
     // Initialize the application
-    if (!init_app(argc, argv)) {
-        fprintf(stderr, "Failed to initialize the application.\n");
+    if(argc <= 1){
+        fprintf(stderr, "Failed to initialize the application.\nPlease Enter the city to begin.\n");
+        return exit_failure();
+    }
+    if(argc > 2){
+        fprintf(stderr, "Error, enter one parameter only.\nPlease enter the city to begin.\n");
         return exit_failure();
     }
 
-    char *request = NULL;
-    char* buff;
-    size_t buffer_size = sizeof(buff);
+    const char* weather_url_route = "https://wttr.in/";
+    const char* weather_url_route_end = "?ATm";
+    
+    size_t request_len = strlen(weather_url_route) + strlen(argv[1]) + strlen(weather_url_route_end) + 1;
+    char *request = malloc(request_len);
+    if (request == NULL){
+        fprintf(stderr, "Memory allocation failed.\n");
+        return exit_failure();
+    }
 
+    strcpy(request,weather_url_route);
+    strcat(request, argv[1]);
+    strcat(request, weather_url_route_end);
+    
     node result = run_curl(request);
+    char* buff = malloc(result.size_arg);
+    snprintf(buff, result.size_arg, "%s", result.arg);
+    size_t buff_size = strlen(buff);
+    
+    char* parsed_buff = parse(buff, buff_size);
+    size_t len_p_buff = strlen(parsed_buff);
+    
+    fwrite(parsed_buff, 1, len_p_buff-1, stdout);
 
-    snprintf(buff, result.size_arg, result.arg);
-
+    free(request);
+    free(buff);
     return exit_success();
 }

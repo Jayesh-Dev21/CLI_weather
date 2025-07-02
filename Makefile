@@ -1,5 +1,6 @@
 CC = gcc
 CFLAGS = -Wall
+LDFLAGS = -lcurl # linker flag for library
 
 TARGET = weather
 
@@ -11,7 +12,7 @@ HEADERS = $(wildcard src/headers/*.h)
 OBJ = $(SRC:.c=.o)
 
 $(TARGET): $(OBJ) 
-	$(CC) $(CFLAGS) $(OBJ) -o $(TARGET)
+	$(CC) $(CFLAGS) $(OBJ) -o $(TARGET) $(LDFLAGS)
 
 # Make object files beforehand and compile only the changes *.c files 
 #results in faster execution.
