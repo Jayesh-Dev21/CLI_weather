@@ -2,6 +2,8 @@
 
 **CLI_weather** is a lightweight and intuitive command-line application that lets you fetch and display real-time weather information right from your terminal. Designed for speed and simplicity, this tool is perfect for developers, system administrators, and anyone who prefers getting weather updates without leaving the command line.
 
+![img](./image/showcase.png)
+
 ## Features
 
 - 🌦️ Real-time weather updates for any city or region
