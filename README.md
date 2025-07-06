@@ -46,7 +46,7 @@ make
 ```
 *Or* compile manually:
 ```bash
-gcc main.c -o cli_weather -lcurl
+gcc main.c -o weather -lcurl
 ```
 
 ## Usage
